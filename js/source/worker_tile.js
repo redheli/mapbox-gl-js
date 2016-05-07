@@ -22,6 +22,14 @@ function WorkerTile(params) {
 
 WorkerTile.prototype.parse = function(data, layerFamilies, actor, rawTileData, callback) {
 
+
+    if(data){
+        console.log("WorkerTile.prototype.parse data ok");
+    }
+    else{
+        console.log("WorkerTile.prototype.parse data noooooooooooooot ok");
+    }
+
     this.status = 'parsing';
     this.data = data;
 

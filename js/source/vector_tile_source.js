@@ -80,6 +80,7 @@ VectorTileSource.prototype = util.inherit(Evented, {
     },
 
     _tileLoaded: function(tile, err, data) {
+        console.log('_tileLoaded');
         if (tile.aborted)
             return;
 

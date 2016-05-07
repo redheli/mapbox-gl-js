@@ -15,12 +15,45 @@
 <body>
 <div id='map'></div>
 <script src='../../dist/mapbox-gl-dev.js'></script>
+
 <script>
     mapboxgl.accessToken = 'pk.eyJ1IjoiamZpcmUiLCJhIjoiZTFlNmQ3N2MzYmM2YzVjMzhkOTM2NTRhYzNiNGZiNGYifQ.1W47kmoEUpTJa3YIFefxUQ';
 
+    var style = {
+        "version": 8,
+        "sources": {
+            "cleantech": {
+                "type": "vector",
+                // "url": "mapbox://map-id"
+                // "url": "http://tileserver.com/layer.json",
+                "tiles": ["http://192.168.1.4:3001/services/postgis/cleantech3/geom/vector-tiles/{z}/{x}/{y}.pbf"],
+                "maxzoom": 22
+            }
+        },
+        "glyphs": location.origin+location.pathname+"font/{fontstack}/{range}.pbf",
+        "layers": [{
+            "id": "cleantech2_geom_id",
+            "type": "circle",
+            'source': 'cleantech',
+            'layout': {
+                'visibility': 'visible'
+            },
+            'paint': {
+                'circle-radius': 1,
+                'circle-color': 'rgba(55,148,179,1)'
+            },
+            'source-layer': 'cleantech3_geom'
+        }]
+    };
+
+    var init_lat = 1.3552799//42.299228067198634;
+    var init_lng = 103.6945413;//-83.69717033229782;
+
     var map = new mapboxgl.Map({
         container: 'map',
-        style: 'mapbox://styles/mapbox/bright-v8'
+        style: style,//'mapbox://styles/mapbox/bright-v8'
+        center: [init_lng,init_lat],
+        zoom: 15
     });
 
     var tooltip = new mapboxgl.Popup({closeOnClick: false})

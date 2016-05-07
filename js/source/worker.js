@@ -102,9 +102,19 @@ util.extend(Worker.prototype, {
 
         var tile = this.loading[source][uid] = new WorkerTile(params);
 
+        console.log('url:'+params.url);
         tile.xhr = ajax.getArrayBuffer(params.url, done.bind(this));
 
         function done(err, data) {
+
+            // test data size
+            console.log('done:'+data.length);
+            var my_pbf = new Protobuf(new Uint8Array(data));
+            var my_vt = new vt.VectorTile(new Protobuf(new Uint8Array(data)));
+            console.log('pbf:'+my_pbf.length);
+            console.log('my_vt layers:'+Object.keys(my_vt.layers));
+            console.log('my_vt layers size:'+my_vt.layers.length);
+
             delete this.loading[source][uid];
 
             if (err) return callback(err);
