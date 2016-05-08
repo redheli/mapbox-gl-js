@@ -31,7 +31,15 @@
             }
         },
         "glyphs": location.origin+location.pathname+"font/{fontstack}/{range}.pbf",
-        "layers": [{
+        "layers": [
+            {
+                "id": "background",
+                "type": "background",
+                "paint": {
+                    "background-color": "#ddeeff"
+                }
+            },
+            {
             "id": "cleantech2_geom_id",
             "type": "circle",
             'source': 'cleantech',
@@ -40,7 +48,12 @@
             },
             'paint': {
                 'circle-radius': 1,
-                'circle-color': 'rgba(55,148,179,1)'
+                //'circle-color': 'rgba(55,148,179,1)'
+                'circle-color' : {
+                    "type": "interval",
+                    stops: [[0, 'rgba(50,50,50,1)'], [100, 'rgba(100,100,100,1)'],[130, 'rgba(130,130,130,1)'],[150, 'rgba(150,150,150,1)'],[180, 'rgba(180,180,180,1)'],[200, 'rgba(200,200,200,1)'],[230,'rgba(230,230,230,1)']],
+                    property: 'name'
+                }
             },
             'source-layer': 'cleantech3_geom'
         }]
