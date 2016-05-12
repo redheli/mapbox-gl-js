@@ -22,11 +22,11 @@
     var style = {
         "version": 8,
         "sources": {
-            "cleantech": {
+            "onenorth": {
                 "type": "vector",
                 // "url": "mapbox://map-id"
                 // "url": "http://tileserver.com/layer.json",
-                "tiles": ["http://192.168.1.111:3001/services/postgis/cleantech3/geom/vector-tiles/{z}/{x}/{y}.pbf?fields=name"],
+                "tiles": ["http://192.168.1.111:3001/services/postgis/onenorth/geom/vector-tiles/{z}/{x}/{y}.pbf?fields=name"],
                 "maxzoom": 22
             }
         },
@@ -40,9 +40,9 @@
                 }
             },
             {
-            "id": "cleantech2_geom_id",
+            "id": "onenorth_geom_id",
             "type": "circle",
-            'source': 'cleantech',
+            'source': 'onenorth',
             'layout': {
                 'visibility': 'visible'
             },
@@ -55,12 +55,12 @@
                     property: 'name'
                 }
             },
-            'source-layer': 'cleantech3_geom'
+            'source-layer': 'onenorth_geom'
         }]
     };
 
-    var init_lat = 1.3552799//42.299228067198634;
-    var init_lng = 103.6945413;//-83.69717033229782;
+    var init_lat = 1.2918784187817567;
+    var init_lng = 103.78734827041626;
 
     var map = new mapboxgl.Map({
         container: 'map',

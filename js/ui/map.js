@@ -855,6 +855,7 @@ util.extend(Map.prototype, /** @lends Map.prototype */{
      * @private
      */
     _render: function() {
+        console.log("map.js _render");
         if (this.style && this._styleDirty) {
             this._styleDirty = false;
             this.style.update(this._classes, this._classOptions);

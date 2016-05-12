@@ -7,6 +7,7 @@ module.exports = drawCircles;
 function drawCircles(painter, source, layer, coords) {
     if (painter.isOpaquePass) return;
 
+    console.log("drawCircles: drawCircles");
     var gl = painter.gl;
 
     painter.setDepthSublayer(0);

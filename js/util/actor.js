@@ -18,6 +18,7 @@ function Actor(target, parent) {
     this.callbacks = {};
     this.callbackID = 0;
     this.receive = this.receive.bind(this);
+    // this.target is worker.js
     this.target.addEventListener('message', this.receive, false);
 }
 
@@ -59,5 +60,6 @@ Actor.prototype.send = function(type, data, callback, buffers) {
  * @private
  */
 Actor.prototype.postMessage = function(message, transferList) {
+    // this.target = worker ,so it actually ask worker do sth
     this.target.postMessage(message, transferList);
 };
